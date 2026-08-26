@@ -1,0 +1,1082 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 50% 70%,
+            rgba(255, 80, 140, 0.25),
+            transparent 35%),
+        linear-gradient(180deg,
+            #050719 0%,
+            #0c102d 45%,
+            #180c29 100%);
+    color: aliceblue;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 180, 220, 0.8) 1px, transparent 1px);
+    background-size:
+        90px 90px,
+        140px 140px,
+        190px 190px;
+    background-position:
+        10px 20px,
+        40px 80px,
+        100px 30px;
+    opacity: 0.8;
+    animation: starsMove 18s linear infinite;
+}
+
+@keyframes starsMove {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.scene::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(255, 70, 140, 0.12);
+    filter: blur(80px);
+    animation: glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    padding: 30px;
+    animation: contentAppear 2s ease forwards;
+}
+
+@keyframes contentAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-text {
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(24px, 7vw, 40px);
+    color: #ffd6e7;
+    margin-bottom: 5px;
+    text-shadow:
+        0 0 10px rgba(255, 120, 180, 0.7),
+        0 0 25px rgba(255, 80, 150, 0.4);
+    animation: fadeDown 1.5s ease;
+}
+
+h1 {
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(48px, 14vw, 80px);
+    font-weight: 700;
+    color: aliceblue;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-shadow:
+        0 0 8px rgba(255, 150, 200, 0.9),
+        0 0 20px rgba(255, 70, 150, 0.7),
+        0 0 40px rgba(255, 50, 130, 0.4);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow:
+            0 0 8px rgba(255, 150, 200, 0.8),
+            0 0 20px rgba(255, 70, 150, 0.5);
+    }
+
+    to {
+        text-shadow:
+            0 0 15px rgba(255, 180, 220, 1),
+            0 0 35px rgba(255, 70, 150, 0.9),
+            0 0 55px rgba(255, 50, 130, 0.5);
+    }
+}
+
+.message {
+    font-size: clamp(16px, 4.5vw, 21px);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+    margin-bottom: 35px;
+    animation: fadeUp 2s ease 0.5s both;
+}
+
+#startButton {
+    border: 1px solid rgba(255, 180, 220, 0.7);
+    background: linear-gradient(135deg,
+            rgba(255, 80, 150, 0.5),
+            rgba(255, 50, 130, 0.25));
+    color: aliceblue;
+    padding: 15px 28px;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow:
+        0 0 15px rgba(255, 70, 150, 0.5),
+        0 0 35px rgba(255, 50, 130, 0.25);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    animation: buttonAppear 2s ease 1s both;
+}
+
+#startButton:hover {
+    transform: scale(1.06);
+    box-shadow:
+        0 0 20px rgba(255, 100, 170, 0.8),
+        0 0 45px rgba(255, 50, 130, 0.5);
+}
+
+#startButton:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 500px) {
+    .content {
+        width: 92%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 58px;
+    }
+
+    .small-text {
+        font-size: 30px;
+    }
+
+    .message {
+        font-size: 17px;
+    }
+
+    #startButton {
+        padding: 14px 25px;
+        font-size: 14px;
+    }
+}
+
+.particle {
+    position: absolute;
+    bottom: -20px;
+    color: #ffb6d9;
+    text-shadow:
+        0 0 8px #ff69a4,
+        0 0 18px #ff3f91;
+    pointer-events: none;
+    animation: particleFloat linear forwards;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.screen-hidden {
+    display: none;
+}
+
+#scene2 {
+    background: radial-gradient(circle at 50% 40%,
+            rgba(255, 60, 130, 0.25),
+            transparent 40%),
+        linear-gradient(180deg,
+            #16091f,
+            #090617);
+
+}
+
+.story-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 430px;
+    text-align: center;
+    animation: storyAppear 1.5s ease forwards;
+}
+
+.story-small {
+    font-family: "Dancing Script", cursive;
+    font-size: 42px;
+    color: #ffd1e4;
+    margin-bottom: 10px;
+    text-shadow:
+        0 0 10px #ff75ad,
+        0 0 25px rgba(255, 70, 140, 0.6);
+}
+
+.story-content h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: aliceblue;
+    margin-bottom: 25px;
+}
+
+.photo-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 430px;
+
+    margin: 20px auto 30px;
+}
+
+.memory-photo {
+    position: relative;
+
+    width: 31%;
+    aspect-ratio: 5 / 4;
+
+    padding: 5px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 0 15px rgba(255, 80, 150, 0.4),
+        0 0 30px rgba(255, 50, 130, 0.2);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.memory-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.photo-one {
+    transform: rotate(-6deg);
+}
+
+.photo-two {
+    transform: translateY(-8px);
+}
+
+.photo-three {
+    transform: rotate(6deg);
+}
+
+.photo-one:hover,
+.photo-two:hover,
+.photo-three:hover {
+    transform: translateY(-10px) scale(1.05) rotate(0deg);
+    z-index: 10;
+
+    box-shadow:
+        0 0 20px rgba(255, 100, 170, 0.7),
+        0 0 40px rgba(255, 50, 130, 0.4);
+}
+
+@keyframes memoryOne {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(-7deg);
+    }
+
+    50% {
+        transform: translate(-50%, -54%) rotate(-10deg);
+    }
+}
+
+@keyframes memoryTwo {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(4deg);
+    }
+
+    50% {
+        transform: translate(-50%, -53%) rotate(7deg);
+    }
+}
+
+@keyframes memoryThree {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(-1deg);
+    }
+
+    50% {
+        transform: translate(-50%, -55%) rotate(2deg);
+    }
+}
+
+
+.story-message {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+#nextStory {
+    border: 1px solid rgba(255, 180, 220, 0.7);
+    background: linear-gradient(135deg,
+            rgba(255, 80, 150, 0.8),
+            rgba(190, 40, 110, 0.8));
+    color: white;
+    padding: 13px 30px;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 70, 150, 0.5);
+    transition: 0.3s;
+}
+
+#nextStory:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 70, 150, 0.8);
+}
+
+@keyframes storyAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.petal {
+    position: absolute;
+    top: -40px;
+    z-index: 1;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(255, 100, 160, 0.8));
+    animation: petalFall linear forwards;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(40px) rotate(180deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(-10px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .story-content {
+        width: 94%;
+        padding: 10px;
+    }
+
+    .story-small {
+        font-size: 36px;
+    }
+
+    .story-content h2 {
+        font-size: 21px;
+    }
+
+    .photo-stack {
+        width: 94%;
+        gap: 8px;
+    }
+
+    .memory-photo {
+        width: 31%;
+        padding: 4px;
+    }
+
+    .story-message {
+        font-size: 14px;
+    }
+}
+
+#scene3 {
+    background: radial-gradient(circle at 50% 45%,
+            rgba(255, 70, 150, 0.3),
+            transparent 40%),
+        linear-gradient(180deg,
+            #18091f,
+            #080513);
+}
+
+.love-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    animation: loveAppear 1.5s ease forwards;
+}
+
+.love-small {
+    font-family: "Dancing Script", cursive;
+    font-size: 38px;
+    color: #ffd1e4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #ff75ad,
+        0 0 25px rgba(255, 70, 140, 0.6);
+}
+
+.love-content h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: aliceblue;
+    margin-bottom: 25px;
+}
+
+.heart-area {
+    position: relative;
+
+    width: 300px;
+    height: 300px;
+
+    margin: 10px auto 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loveHeart {
+    position: relative;
+
+    width: 105px;
+    height: 105px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            #ff4f91,
+            #d71967);
+
+    font-size: 48px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255, 70, 150, 0.8),
+        0 0 40px rgba(255, 50, 130, 0.6),
+        0 0 80px rgba(255, 50, 130, 0.3);
+
+    animation: heartBeat 1.5s ease-in-out infinite;
+
+    z-index: 5;
+}
+
+#loveHeart:active {
+    transform: scale(0.9);
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.love-message {
+    position: absolute;
+
+    opacity: 0;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 21px;
+
+    color: #ffd5e7;
+
+    text-shadow:
+        0 0 10px rgba(255, 100, 170, 0.8);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.8s ease;
+}
+
+.message-one {
+    top: 20px;
+    left: 5px;
+
+    transform: translateY(20px) rotate(-8deg);
+}
+
+.message-two {
+    top: 35px;
+    right: 0;
+
+    transform: translateY(20px) rotate(8deg);
+}
+
+.message-three {
+    bottom: 30px;
+    left: -5px;
+
+    transform: translateY(20px) rotate(5deg);
+}
+
+.message-four {
+    bottom: 20px;
+    right: 0;
+
+    transform: translateY(20px) rotate(-7deg);
+}
+
+.tap-text {
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+    animation: gentleFade 2s ease-in-out infinite alternate;
+}
+
+#nextLove {
+    border: 1px solid rgba(255, 180, 220, 0.7);
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 80, 150, 0.8),
+            rgba(190, 40, 110, 0.8));
+
+    color: white;
+
+    padding: 13px 30px;
+
+    border-radius: 50px;
+
+    font-family: "Poppins", sans-serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255, 70, 150, 0.5);
+
+    transition: 0.3s;
+}
+
+#nextLove:hover {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 30px rgba(255, 70, 150, 0.8);
+}
+
+@keyframes gentleFade {
+
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loveAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .love-small {
+        font-size: 32px;
+    }
+
+    .love-content h2 {
+        font-size: 21px;
+    }
+
+    .heart-area {
+        width: 280px;
+        height: 280px;
+    }
+
+    #loveHeart {
+        width: 90px;
+        height: 90px;
+        font-size: 40px;
+    }
+
+    .love-message {
+        font-size: 18px;
+    }
+
+}
+
+#scene4 {
+    background: radial-gradient(circle at 50% 45%,
+            rgba(255, 60, 140, 0.35),
+            transparent 40%),
+        linear-gradient(180deg,
+            #19081f,
+            #07040d);
+}
+
+.proposal-intro {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    animation: proposalAppear 1.5s ease forwards;
+}
+
+.proposal-small {
+    font-family: "Dancing Script", cursive;
+    font-size: 40px;
+    color: #ffd1e4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #ff75ad,
+        0 0 30px rgba(255, 70, 140, 0.7);
+}
+
+.proposal-intro h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: aliceblue;
+    margin-bottom: 35px;
+}
+
+.love-envelope {
+    position: relative;
+    width: 220px;
+    height: 150px;
+    margin: 0 auto 25px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255, 70, 150, 0.6));
+    animation: envolopeFloat 3s ease-in-out infinite;
+}
+
+.envelope-body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,
+            #ff6fa5,
+            #d91c68);
+    border-radius: 8px;
+    font-size: 55px;
+    box-shadow: 0 0 20px rgba(255, 70, 150, 0.5);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 75px solid #ff9fc2;
+    z-index: 3;
+    transform-origin: top;
+    transition: transform 0.8s ease;
+}
+
+@keyframes envolopeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes proposalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.open-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 18px;
+}
+
+#openProposal {
+    border: 1px solid rgba(255, 180, 220, 0.7);
+    background: linear-gradient(135deg,
+            rgba(255, 80, 150, 0.8),
+            rgba(190, 40, 110, 0.9));
+    color: aliceblue;
+    padding: 13px 32px;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 70, 150, 0.5);
+    transition: transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#openProposal:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 70, 150, 0.8);
+}
+
+@media (max-width: 500px) {
+
+    .proposal-small {
+        font-size: 34px;
+    }
+
+    .proposal-intro h2 {
+        font-size: 22px;
+    }
+
+    .love-envelope {
+        width: 200px;
+        height: 135px;
+    }
+
+    .envelope-flap {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-top-width: 68px;
+    }
+
+}
+
+#continueLetter {
+    border: 1px solid rgba(255, 180, 220, 0.7);
+    background: linear-gradient(135deg,
+            rgba(255, 80, 150, 0.8),
+            rgba(190, 40, 110, 0.8));
+    color: white;
+    padding: 13px 30px;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 70, 150, 0.6);
+    transition: 0.3s;
+}
+
+#continueLetter:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px rgba(255, 70, 150, 0.9);
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.love-letter {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at 50% 35%,
+            rgba(255, 70, 150, 0.28),
+            transparent 45%),
+        linear-gradient(180deg,
+            #16091f 0%,
+            #090617 100%);
+
+    color: white;
+
+    overflow-y: auto;
+}
+
+.love-letter h2 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(42px, 5vw, 72px);
+
+    font-weight: 600;
+
+    color: #ffd6e7;
+
+    margin-bottom: 35px;
+
+    text-shadow:
+        0 0 10px rgba(255, 150, 200, 0.9),
+        0 0 25px rgba(255, 70, 150, 0.7),
+        0 0 45px rgba(255, 50, 130, 0.4);
+}
+
+.letter_text {
+    width: min(850px, 85vw);
+
+    padding: 40px 55px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: clamp(16px, 1.35vw, 20px);
+
+    line-height: 2;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 180, 220, 0.3);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 25px rgba(255, 70, 150, 0.2),
+        0 0 60px rgba(255, 50, 130, 0.08);
+
+    backdrop-filter: blur(12px);
+}
+
+@media (max-width: 600px) {
+
+    .love-letter {
+        padding: 25px 15px;
+    }
+
+    .love-letter h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .letter_text {
+        width: 95%;
+        padding: 22px 18px;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}
+
+/* ===== FINAL LOVE LETTER ANIMATION ===== */
+
+.letter_text {
+    animation: letterAppear 2s ease forwards;
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating hearts */
+.final-heart {
+    position: absolute;
+    bottom: -30px;
+    pointer-events: none;
+    font-size: 20px;
+    animation: finalHeartFloat 6s linear forwards;
+    z-index: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 80, 150, 0.9));
+}
+
+@keyframes finalHeartFloat {
+    0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.2) rotate(25deg);
+        opacity: 0;
+    }
+}
